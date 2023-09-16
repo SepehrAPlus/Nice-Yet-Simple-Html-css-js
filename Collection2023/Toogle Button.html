@@ -1,0 +1,106 @@
+<style type="text/css">
+
+:root
+	{
+		--True__Color: #51ff8d;
+		--False__Color: #ff5151;
+	}
+
+
+.NiceLookingToggleButton__SharedStyle
+	{
+		border-style: solid;
+		border-radius: 15px;
+		padding: 0.5rem;
+		border-color: black;
+		display: block;
+
+	}
+
+
+
+
+.NiceLookingToggleButton__True
+	{
+		background-color: var(--True__Color);
+		transform: translateY(0vh);
+		box-shadow: 0px 0px 0px 1.2px black;
+		transition: 0.1s;
+
+	}
+
+
+.NiceLookingToggleButton__False
+	{
+
+		background-color: var(--False__Color);
+		box-shadow: 0px 3vh 0px 1.2px black;
+		transform: translateY(-1vh);
+		transition: 0.1s;
+	}
+
+</style>
+
+
+<script>
+function doNothing() {}
+function MakeAndReturn__NiceLookingToggleButton(initalState, onClick, onTrueText, onFalseText)
+	{
+		/*initalState can be false, true*/
+
+		let text_array = [onTrueText, onFalseText]
+
+
+		//*****
+		 
+		let output = document.createElement("button")
+		output.isOnTrue = true 
+		output.innerText = onTrueText
+		output.classList.add("NiceLookingToggleButton__SharedStyle")
+		output.classList.toggle('NiceLookingToggleButton__True')
+
+
+
+
+
+
+		output.onclick = function () 
+			{
+				onClick()
+				output.classList.toggle('NiceLookingToggleButton__True')
+				output.classList.toggle('NiceLookingToggleButton__False')
+				text_array.reverse()
+				output.innerText = text_array[0]
+				output.isOnTrue = !output.isOnTrue
+
+			}
+		if (initalState === false)
+			{
+				output.onclick()
+			}
+
+
+		return output
+	}
+
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script>
+		document.body.appendChild(MakeAndReturn__NiceLookingToggleButton(true, doNothing, "True.", "False"))
+		document.body.appendChild(MakeAndReturn__NiceLookingToggleButton(true, doNothing, "True.", "False"))
+		document.body.appendChild(MakeAndReturn__NiceLookingToggleButton(true, doNothing, "True.", "False"))
+		document.body.appendChild(MakeAndReturn__NiceLookingToggleButton(true, doNothing, "True.", "False"))
+	</script>
+	
+
+</body>
+</html>
