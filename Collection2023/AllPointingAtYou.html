@@ -1,0 +1,118 @@
+<style> 
+.MainAppFlex
+	{
+
+	}
+
+.Pointer
+	{
+		transform: rotateZ(0rad);
+		width: fit-content;
+		display: inline;
+		font-size: 30px;
+		background-color: transparent;
+		border-style: hidden;
+		color: white;
+		margin: 30px;
+	}
+
+body 
+	{
+		height: 100%;
+		background-color: black;
+	}
+</style>
+
+
+
+<script>
+let pointers = []
+let pointer_char = "-->"
+function MakeAndReturn__Pointer(argument) 
+	{
+		let output = document.createElement("button")
+		output.classList.add("Pointer")
+		output.innerText = pointer_char
+
+		output.PointAtMouse = function (mousex, mousey)
+			{
+				let self_x = output.getBoundingClientRect().left
+				let self_y = output.getBoundingClientRect().top
+				
+
+				let x_mag = mousex-self_x
+				let y_mag = mousey-self_y
+
+				let angle = Math.atan(y_mag/x_mag)
+				let hypo = Math.sqrt(Math.pow(x_mag,2)+Math.pow(y_mag,2))
+
+				output.style.transform = `rotateZ(${angle}rad)`
+
+
+				let s = screen 
+				let sh = s.height 
+				let sw = s.width
+
+				let max_hypo = Math.sqrt(Math.pow(sw,2)+Math.pow(sh,2))
+
+				//farness fenies lumination 
+				//angle defines satruation
+
+
+				output.innerText =`${Math.floor(100-(hypo/max_hypo)*100)}`
+
+
+
+
+				output.style.color = `hsl(128, ${(angle/360)*100}%, ${100-(hypo/max_hypo)*100}%)`
+			}
+
+		return output
+	}
+
+function addToMainApAppFlex(el)
+	{
+		let n = document.querySelector(".MainAppFlex")
+		n.appendChild(el)
+	}
+
+
+function body_onmouse(event)
+	{
+		let x = event.clientX
+		let y = event.clientY
+		for (let i1 of pointers)
+			{
+				i1.PointAtMouse(x,y)
+			}
+
+
+	}
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>all pointing at you</title>
+</head>
+<body>
+	<div class="MainAppFlex">
+		<script type="text/javascript">
+			document.body.onmousemove = body_onmouse
+
+
+
+			for (let i1 = 0; i1 != 50; i1++)
+				{	
+					let p = MakeAndReturn__Pointer()
+					addToMainApAppFlex(p)
+					pointers.push(p)
+				}
+		</script>
+		
+	</div>
+</body>
+</html>
