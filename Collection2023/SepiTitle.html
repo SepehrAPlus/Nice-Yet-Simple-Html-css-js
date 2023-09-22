@@ -88,6 +88,30 @@
 
 </style>
 
+<script type="text/javascript">
+
+function MakeAndReturn__SepiTitle(startText, endText)
+	{
+	let output = document.createElement("div")
+	output.classList.add("st_shared")
+	output.classList.add("SepiTitle")
+	output.innerHTML = `
+		<div class="st_shared st_shared_Flex st_sFlex">
+			<h1 class="st_shared st_shared_Title st_sTitle">${startText}</h1>
+			<p class="st_shared st_shared_Underline st_sUnderline">1</p>
+		</div>
+
+		<div class="st_shared st_shared_Flex st_eFlex">
+			<h1 class="st_shared st_shared_Title st_eTitle">${endText}</h1>
+			<p class="st_shared st_shared_Underline st_eUnderline">1</p>
+		</div>
+	`
+
+	return output
+	}
+
+</script>
+
 
 
 <!DOCTYPE html>
@@ -98,17 +122,9 @@
 	<title></title>
 </head>
 <body>
-	<div class="st_shared SepiTitle">
-		<div class="st_shared st_shared_Flex st_sFlex">
-			<h1 class="st_shared st_shared_Title st_sTitle">Sepi</h1>
-			<p class="st_shared st_shared_Underline st_sUnderline">1</p>
-		</div>
-
-		<div class="st_shared st_shared_Flex st_eFlex">
-			<h1 class="st_shared st_shared_Title st_eTitle">Title</h1>
-			<p class="st_shared st_shared_Underline st_eUnderline">1</p>
-		</div>
-	</div>
+	<script type="text/javascript">
+		document.body.appendChild(MakeAndReturn__SepiTitle("sepi", "Title"))
+	</script>
 </body>
 </html>
 
