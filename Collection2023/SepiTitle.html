@@ -1,0 +1,115 @@
+
+
+
+
+<style>
+.SepiTitle 
+	{
+		display: flex;
+		flex-direction: row;
+
+	}
+
+
+:root 
+	{
+		--st_start_color : black; 
+		--st_end_color : #39bc85;
+		--st_font_size : medium;
+	}
+
+/*===========*/
+.st_shared 
+	{
+		box-sizing: border-box;
+
+	}
+
+.st_shared_Flex
+	{
+		height: fit-content;
+		display: flex;
+		flex-direction: column;
+
+	}
+
+.st_shared_Title
+	{
+		margin-bottom: 0px;
+		display: inline;
+		font-size: st_font_size;
+		
+	}
+
+.st_shared_Underline
+	{
+		margin-top: 0px;
+		color: transparent;
+		font-size: xx-small;
+		height: 5%;
+		width: 100%;
+
+	}
+/*===========*/
+.st_sFlex
+	{
+
+	}
+
+.st_sTitle
+	{
+		color: var(--st_start_color);
+
+	}
+
+.st_sUnderline
+	{
+		background-color: var(--st_start_color);
+
+	}
+
+/*===========*/
+
+.st_eFlex
+	{
+
+	}
+
+.st_eTitle
+	{
+
+		color: var(--st_end_color);
+	}
+
+.st_eUnderline
+	{
+		background-color: var(--st_end_color);
+	}
+
+</style>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<div class="st_shared SepiTitle">
+		<div class="st_shared st_shared_Flex st_sFlex">
+			<h1 class="st_shared st_shared_Title st_sTitle">Sepi</h1>
+			<p class="st_shared st_shared_Underline st_sUnderline">1</p>
+		</div>
+
+		<div class="st_shared st_shared_Flex st_eFlex">
+			<h1 class="st_shared st_shared_Title st_eTitle">Title</h1>
+			<p class="st_shared st_shared_Underline st_eUnderline">1</p>
+		</div>
+	</div>
+</body>
+</html>
+
+
