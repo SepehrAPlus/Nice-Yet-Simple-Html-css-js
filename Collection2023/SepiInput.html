@@ -1,0 +1,203 @@
+<style type="text/css">
+.SepiInput_shared_style
+	{
+		box-sizing: border-box;
+	}
+
+.SepiInput
+	{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	}
+
+.si_InfoFlex
+	{
+	display: flex block;
+	justify-items: space-between;
+	flex-direction: row;
+
+	}
+
+.si_InputFlex
+	{
+	margin-top: 5px;
+	display: flex;
+	justify-items: space-between;
+	flex-direction: row;
+	width: 100%;
+	}
+/*========================*/
+.si_Input_shared_style
+	{
+
+	}
+
+.si_Input
+	{
+	border-style: solid;
+	width: 100%;
+	transform: translateY(2px);
+	transition: 0.1s;
+	background-color: whitesmoke;
+	border-radius: 15px;
+
+	}
+
+.si_Input:focus
+	{
+	background-color: transparent;	
+	outline-style: none;
+	border-color: #39bc85;
+	transform: translateY(0px);
+	transition: 0.1s;
+
+	border-top-width: 0px;
+	border-left-width: 0px;
+	border-right-width: 0px;
+	border-bottom-width: 0.1rem;
+
+	}
+
+
+/*========================*/
+.si_LabelUnderLine
+	{
+	width: 100%;
+	height: 10%;
+	font-size: 0.1rem;
+	margin: 0px;
+	background-color: black;
+	color: transparent;
+	transition: 0.1s;
+	}
+
+
+.si_LabelText
+	{
+	font-style: italic;
+	color: black;
+	font-size: medium;
+	margin: 0px;
+	transition: 0.1s;
+	}
+
+
+.si_LabelUnderLine_focused
+	{
+	color: #39bc85;
+	transform: scale(1.1);
+	transition: 0.1s;
+
+	}
+
+
+.si_LabelText_focused
+	{
+	background-color: transparent;
+	transform: scale(1.1);
+	transition: 0.1s;
+	}
+
+
+.si_LabelFlex
+	{
+		display: flex;
+		flex-direction: column;
+		height: fit-content;
+	}
+
+.si_ErrorMessageHolder
+	{
+		font-size: xx-small;
+		color: red;
+		margin: 0px;
+	}
+
+</style>
+
+
+<script type="text/javascript">
+
+function MakeAndReturn__SepiInput()
+	{
+		let output = document.createElement("div")
+		output.classList.add("SepiInput")
+		output.classList.add("SepiInput_shared_style")
+
+
+		let info_flex = document.createElement("div")
+		info_flex.classList.add("si_InfoFlex")
+		output.appendChild(info_flex)
+		info_flex.classList.add("SepiInput_shared_style")
+
+
+		let label_flex = document.createElement("div")
+		label_flex.classList.add("si_LabelFlex")
+		info_flex.appendChild(label_flex)
+		output.classList.add("SepiInput_shared_style")
+
+
+		let label = document.createElement("h1")
+		label.innerText = "LABEL"
+		label.classList.add("si_LabelText")
+		label_flex.appendChild(label)
+		label.classList.add("SepiInput_shared_style")
+
+
+		let underline = document.createElement("p")
+		underline.innerText = "1"
+		underline.classList.add("si_LabelUnderLine")
+		label_flex.appendChild(underline)
+		underline.classList.add("SepiInput_shared_style")
+
+
+		let error_message_holder = document.createElement("p")
+		error_message_holder.classList.add("si_ErrorMessageHolder")
+		error_message_holder.innerText = ""
+		error_message_holder.classList.add("SepiInput_shared_style")
+		info_flex.appendChild(error_message_holder)
+
+
+		let input_flex = document.createElement("div")
+		input_flex.classList.add("si_InputFlex")
+		output.appendChild(input_flex)
+		input_flex.classList.add("SepiInput_shared_style")
+
+		let input = document.createElement("input")
+		input_flex.appendChild(input)
+		input.classList.add("si_Input")
+		input.classList.add("SepiInput_shared_style")	
+		input.onfocus = function()
+			{
+			label.classList.toggle("si_LabelUnderLine_focused")
+			underline.classList.toggle("si_LabelText_focused")
+			}
+
+		input.onblur = function()
+			{
+			label.classList.toggle("si_LabelUnderLine_focused")
+			underline.classList.toggle("si_LabelText_focused")
+			}
+
+		return output
+	}
+</script>
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		document.body.appendChild(MakeAndReturn__SepiInput())
+	</script>
+		
+
+
+</body>
+</html>
