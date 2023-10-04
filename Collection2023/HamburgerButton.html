@@ -1,0 +1,126 @@
+<style>
+
+.HamburgerButton_flex
+	{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		height: 9vw;
+		width: 9vw;
+		transform: rotateZ(0deg);
+		transition: 0.2s;
+
+	}
+
+
+.HamburgerButton_flex_opened
+	{
+		transform: rotateZ(90deg);
+		transition: 0.2s;
+		background-color: black;
+	}	
+
+
+.HamburgerButton_bar 
+	{
+		height: 15%;
+		width: 80%;
+		background-color: black;
+		margin: 3%;
+	}
+
+.HamburgerButton_bar_opened
+	{
+		background-color: white;
+
+	}
+
+.HamburgerButton_X 
+	{
+		color: white;
+		font-size: 1rem;
+		font-family: monospace !important;
+		text-align: center;
+	}
+
+
+
+
+</style>
+
+
+
+<script>
+function doNothing(){}
+function MakeAndReturn__HamburgerButton(onOpen, OnClose)
+	{
+		let output = document.createElement("div")
+		output.classList.add("HamburgerButton_flex")
+		output.is_open = false
+		output.onclick = function()
+			{
+				is_open = output.is_open === true 
+				if (is_open)
+					{
+						OnClose()
+						output.classList.toggle("HamburgerButton_flex_opened")
+						output.appendChild(b1)
+						output.appendChild(b2)
+						output.appendChild(b3)
+						output.removeChild(x)
+					}
+				else if (~is_open)
+					{
+						onOpen()
+						output.classList.toggle("HamburgerButton_flex_opened")
+						output.removeChild(b1)
+						output.removeChild(b2)
+						output.removeChild(b3)
+						output.appendChild(x)
+					}
+				
+				b1.classList.toggle("HamburgerButton_bar_opened")
+				b2.classList.toggle("HamburgerButton_bar_opened")
+				b3.classList.toggle("HamburgerButton_bar_opened")
+				output.is_open = !output.is_open
+			}
+
+		let x = document.createElement("h1")
+		x.classList.add("HamburgerButton_X")
+		x.innerText = "x"
+
+		let b1 = document.createElement("h1")
+		b1.classList.add("HamburgerButton_bar")
+		output.appendChild(b1)
+
+
+		let b2 = document.createElement("h1")
+		b2.classList.add("HamburgerButton_bar")
+		output.appendChild(b2)
+
+
+		let b3 = document.createElement("h1")
+		b3.classList.add("HamburgerButton_bar")
+		output.appendChild(b3)
+
+		return output
+	}
+
+</script>
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+</head>
+<body>
+	<script type="text/javascript">
+		document.body.appendChild(MakeAndReturn__HamburgerButton(doNothing, doNothing))
+	</script>
+
+</body>
+</html>
